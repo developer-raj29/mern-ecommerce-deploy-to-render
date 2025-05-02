@@ -35,19 +35,6 @@ const App = () => {
     dispatch(checkAuth(token));
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   const authToken = localStorage.getItem("token");
-  //   if (!isAuthenticated && authToken) {
-  //     dispatch(checkAuth());
-  //   }
-  // }, [isAuthenticated]);
-  // useEffect(() => {
-  //   const authToken = JSON.parse(localStorage.getItem("token"));
-  //   if (authToken) {
-  //     dispatch(checkAuth());
-  //   }
-  // }, []);
-
   // Loading Icon
   if (isLoading) return <Loader />;
   // <Skeleton className="w-full bg-black min-h-screen" />;
