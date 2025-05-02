@@ -106,36 +106,48 @@ const ProductDetailsDialog = ({ open, setOpen, productDetails }) => {
 
   return (
     <Dialog open={open} onOpenChange={handleDialogClose}>
-      <DialogContent className="grid grid-cols-2 gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]">
-        <div className="relative overflow-hidden rounded-lg">
-          <img
+      {/* <DialogContent className="grid grid-cols-2 gap-8 sm:p-12 max-w-[90vw] sm:max-w-[80vw] lg:max-w-[70vw]"> */}
+      <DialogContent
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-2 p-4 sm:p-6 md:p-8 rounded-3xl
+        w-[330px] sm:w-[550px] md:w-[1024px] lg:max-w-[70vw] xl:max-w-[90vw] h-[80vh] xl:h-[90vh] overflow-auto"
+      >
+        <div className="relative overflow-clip xl:overflow-hidden rounded-lg">
+          {/* <img
             src={productDetails?.image}
             alt={productDetails?.title}
             width={600}
             height={600}
             className="aspect-square w-full object-cover"
+          /> */}
+          <img
+            src={productDetails?.image}
+            alt={productDetails?.title}
+            className="aspect-square w-full max-h-[300px] xl:max-h-[400px] object-contain mx-auto"
           />
         </div>
         <div className="">
           <div>
-            <h1 className="text-3xl font-extrabold">{productDetails?.title}</h1>
-            <p className="text-muted-foreground text-2xl mb-5 mt-4">
+            <h1 className="text-2xl xl:text-3xl font-extrabold">
+              {productDetails?.title}
+            </h1>
+            <p className="text-muted-foreground text-[1rem] xl:text-2xl mb-5 mt-4">
               {productDetails?.description}
             </p>
           </div>
-          <div className="flex items-center justify-between">
-            <p
-              className={`text-3xl font-bold text-primary ${
-                productDetails?.salePrice > 0 ? "line-through" : ""
-              }`}
-            >
-              ${productDetails?.price}
-            </p>
+          <div className="flex items-center justify-start gap-4">
+            {/* <div className="flex flex-row sm:items-center sm:justify-between gap-2"> */}
             {productDetails?.salePrice > 0 ? (
               <p className="text-2xl font-bold text-muted-foreground">
                 ${productDetails?.salePrice}
               </p>
             ) : null}
+            <p
+              className={`text-2xl font-bold text-primary ${
+                productDetails?.salePrice > 0 ? "line-through" : ""
+              }`}
+            >
+              ${productDetails?.price}
+            </p>
           </div>
           <div className="flex items-center gap-2 mt-2">
             <div className="flex items-center gap-0.5">

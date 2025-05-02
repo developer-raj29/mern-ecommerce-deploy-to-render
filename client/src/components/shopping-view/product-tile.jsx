@@ -15,7 +15,8 @@ const ShoppingProductTile = ({
           <img
             src={product?.image}
             alt={product?.title}
-            className="w-full h-[300px] object-cover rounded-t-lg"
+            // className="w-full h-[300px] object-contain hover:-scale-90 rounded-t-lg"
+            className="w-[250px] h-[300px] mx-auto object-cover rounded-t-lg transform transition-transform duration-300 hover:scale-105"
           />
           {product?.totalStock === 0 ? (
             <Badge className="absolute top-2 left-2 bg-red-500 hover:bg-red-600">

@@ -71,17 +71,6 @@ const App = () => {
         <Route path="/unauth-page" element={<UnauthPage />} />
         <Route path="*" element={<NotFound />} />
 
-        {/* <Route
-          path="/"
-          element={
-            <CheckAuth>
-              <Route path="shop" element={<ShoppingLayout />}>
-                <Route path="home" element={<ShoppingHome />} />
-              </Route>
-            </CheckAuth>
-          }
-        ></Route> */}
-
         {/* Auth Routes */}
         <Route
           path="/auth"
@@ -100,7 +89,6 @@ const App = () => {
           path="/admin"
           element={
             <CheckAuth requiredRole="admin">
-              {/* <CheckAuth isAuthenticated={isAuthenticated} user={user}> */}
               <AdminLayout />
             </CheckAuth>
           }
@@ -116,7 +104,6 @@ const App = () => {
           path="/shop"
           element={
             <CheckAuth>
-              {/* <CheckAuth isAuthenticated={isAuthenticated} user={user}> */}
               <ShoppingLayout />
             </CheckAuth>
           }

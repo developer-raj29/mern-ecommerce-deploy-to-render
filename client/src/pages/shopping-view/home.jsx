@@ -37,6 +37,7 @@ const categoriesWithIcon = [
   { id: "kids", label: "Kids", icon: BabyIcon },
   { id: "accessories", label: "Accessories", icon: WatchIcon },
   { id: "footwear", label: "Footwear", icon: UmbrellaIcon },
+  { id: "electronics", label: "Electronics", icon: Airplay },
 ];
 
 const brandsWithIcon = [
@@ -122,8 +123,10 @@ const ShoppingHome = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="relative w-full h-[600px] overflow-hidden">
+    // <div className="flex flex-col min-h-screen">
+    <>
+      {/* <div className="relative w-full h-[600px] mt-4 overflow-hidden"> */}
+      <div className="relative w-full h-[200px] sm:h-[300px] md:h-[380px] lg:h-[500px] xl:h-[700px] xl:mt-4 lg:mt-12 mt-16 overflow-hidden">
         {featureImageList && featureImageList.length > 0
           ? featureImageList.map((slide, index) => (
               <img
@@ -145,7 +148,8 @@ const ShoppingHome = () => {
                 featureImageList.length
             )
           }
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
+          // className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80"
+          className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-white/80"
         >
           <ChevronLeftIcon className="w-4 h-4" />
         </Button>
@@ -157,26 +161,32 @@ const ShoppingHome = () => {
               (prevSlide) => (prevSlide + 1) % featureImageList.length
             )
           }
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80"
+          // className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80"
+          className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-white/80"
         >
           <ChevronRightIcon className="w-4 h-4" />
         </Button>
       </div>
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+
+      <section className="py-6 xl:py-12 bg-gray-50">
+        {/* <div className="container mx-auto px-4"> */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* <h2 className="text-3xl font-bold text-center mb-8"> */}
+          <h2 className="text-3xl sm:text-3xl font-bold text-center mb-8">
             Shop by category
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 xl:gap-10">
             {categoriesWithIcon.map((categoryItem) => (
               <Card
                 key={categoryItem.id}
                 onClick={() =>
                   handleNavigateToListingPage(categoryItem, "category")
                 }
-                className="cursor-pointer hover:shadow-lg transition-shadow"
+                // className="cursor-pointer hover:shadow-lg transition-shadow"
+                className="cursor-pointer hover:shadow-lg transition-shadow h-full"
               >
-                <CardContent className="flex flex-col items-center justify-center p-6">
+                {/* <CardContent className="flex flex-col items-center justify-center p-6"> */}
+                <CardContent className="flex flex-col items-center justify-center p-4 sm:p-6 gap-2 text-center">
                   <categoryItem.icon className="w-12 h-12 mb-4 text-primary" />
                   <span className="font-bold">{categoryItem.label}</span>
                 </CardContent>
@@ -186,7 +196,7 @@ const ShoppingHome = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50">
+      <section className="py-6 xl:py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Shop by Brand</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -206,7 +216,7 @@ const ShoppingHome = () => {
         </div>
       </section>
 
-      <section className="py-12">
+      <section className="py-6 xl:py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Feature Products
@@ -225,12 +235,14 @@ const ShoppingHome = () => {
           </div>
         </div>
       </section>
+
       <ProductDetailsDialog
         open={openDetailsDialog}
         setOpen={setOpenDetailsDialog}
         productDetails={productDetails}
       />
-    </div>
+    </>
+    // </div>
   );
 };
 
